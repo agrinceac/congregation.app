@@ -1,0 +1,30 @@
+.full-page-text {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+.sign-in-form label{
+    text-indent: -20px;
+    color: #ffffff;
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+.sign-in-form .checkbox {
+    line-height: 20px;
+}
+
+.divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.sign-in-form .form-group {
+    margin-bottom: 0px;
+}
