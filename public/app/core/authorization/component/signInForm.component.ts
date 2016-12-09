@@ -2,7 +2,7 @@
  * Created by dmitricercel on 28.11.16.
  */
 import { Component } from '@angular/core';
-import {Http, Headers} from "@angular/http";
+import {Http} from "@angular/http";
 import {Validators, FormBuilder} from "@angular/forms";
 
 class User {
@@ -27,12 +27,8 @@ export class SignInFormComponent {
 
     signIn(event) {
         if ( this.loginForm.valid ) {
-            this.user._token = $('meta[name="csrf-token"]').attr('content');
-            let body         = JSON.stringify(this.user);
-            let headers      = new Headers({ '_token': this.user._token });
-
             this.http
-                .post('/api/auth/signIn', body)
+                .post('/api/auth/signIn', this.user)
                 .subscribe(response => {
                     console.log(response);
                 }, error => {

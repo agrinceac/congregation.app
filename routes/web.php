@@ -13,7 +13,7 @@
 
 Route::get('/', 'AppController@index');
 
-Route::post('/api/auth/signIn', 'LoginController@signIn');
+Route::post('/auth/signIn', 'LoginController@signIn');
 
 Auth::routes();
 

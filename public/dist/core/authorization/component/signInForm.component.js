@@ -31,11 +31,8 @@ var SignInFormComponent = (function () {
     }
     SignInFormComponent.prototype.signIn = function (event) {
         if (this.loginForm.valid) {
-            this.user._token = $('meta[name="csrf-token"]').attr('content');
-            var body = JSON.stringify(this.user);
-            var headers = new http_1.Headers({ '_token': this.user._token });
             this.http
-                .post('/api/auth/signIn', body)
+                .post('/api/auth/signIn', this.user)
                 .subscribe(function (response) {
                 console.log(response);
             }, function (error) {

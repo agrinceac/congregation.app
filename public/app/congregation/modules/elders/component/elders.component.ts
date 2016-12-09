@@ -8,7 +8,6 @@ import {Elder} from "./elder.interface";
 import {ElderService} from "../service/elder.service";
 
 @Component({
-    selector: 'cg-elders',
     template: `
         <h2>Elders</h2>
         <h4>Current elder: {{elder ? elder.name : 'Not selected'}}</h4>

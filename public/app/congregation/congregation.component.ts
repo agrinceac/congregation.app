@@ -16,12 +16,4 @@ export class CongregationComponent {
         title.setTitle('Congregation App. It helps you to bill info');
     }
 
-    congregation: Congregation = {
-        name: 'Кишинев-Траян',
-        total: 157,
-        pioneers: 31,
-        elders: 10,
-        ministers: 5
-    }
-
 }

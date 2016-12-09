@@ -10,22 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var congregation_component_1 = require("./congregation/congregation.component");
-var elders_component_1 = require("./congregation/modules/elders/component/elders.component");
 var http_1 = require("@angular/http");
 require('rxjs/Rx');
-var elder_component_1 = require("./congregation/modules/elders/component/elder.component");
 var material_1 = require("@angular/material");
-var signInForm_component_1 = require("./core/authorization/component/signInForm.component");
 var forms_1 = require("@angular/forms");
+var router_1 = require('@angular/router');
+var index_component_1 = require("./index.component");
+var congregation_module_1 = require("./congregation/congregation.module");
+var appRoutes = [];
 var IndexModule = (function () {
     function IndexModule() {
     }
     IndexModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, forms_1.FormsModule, http_1.HttpModule, material_1.MaterialModule.forRoot()],
-            declarations: [congregation_component_1.CongregationComponent, elders_component_1.EldersComponent, elder_component_1.ElderComponent, signInForm_component_1.SignInFormComponent],
-            bootstrap: [congregation_component_1.CongregationComponent]
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.ReactiveFormsModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                material_1.MaterialModule.forRoot(),
+                router_1.RouterModule.forRoot(appRoutes),
+                congregation_module_1.CongregationModule
+            ],
+            declarations: [
+                index_component_1.IndexComponent
+            ],
+            bootstrap: [
+                index_component_1.IndexComponent
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], IndexModule);

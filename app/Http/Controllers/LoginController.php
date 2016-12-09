@@ -24,6 +24,7 @@ class LoginController extends Controller
     public function signIn(Request $request)
     {
         dump($request->input('username'), $request->input('password'));
+
         return response()->json(true);
     }
 }

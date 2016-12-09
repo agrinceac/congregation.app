@@ -15,13 +15,6 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require("@angular/platform-browser");
 var CongregationComponent = (function () {
     function CongregationComponent(title) {
-        this.congregation = {
-            name: 'Кишинев-Траян',
-            total: 157,
-            pioneers: 31,
-            elders: 10,
-            ministers: 5
-        };
         title.setTitle('Congregation App. It helps you to bill info');
     }
     CongregationComponent = __decorate([

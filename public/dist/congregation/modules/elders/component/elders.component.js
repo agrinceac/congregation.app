@@ -32,7 +32,6 @@ var EldersComponent = (function () {
     };
     EldersComponent = __decorate([
         core_1.Component({
-            selector: 'cg-elders',
             template: "\n        <h2>Elders</h2>\n        <h4>Current elder: {{elder ? elder.name : 'Not selected'}}</h4>\n        <ul>\n            <li *ngFor=\"let elder of elders; let isEven = even\" [style.color]=\"isEven ? 'green' : 'blue' \" >\n                <cg-elder (elderSelected)=\"setCurrentElder($event)\" [elder]=\"elder\"></cg-elder>\n            </li>\n        </ul>\n    ",
             providers: [elders_service_1.EldersService]
         }), 
