@@ -2,7 +2,6 @@
  * Created by dmitricercel on 15.11.16.
  */
 import {Component, OnInit} from '@angular/core';
-import {Congregation} from "./congregation.interface";
 import {Title} from "@angular/platform-browser";
 
 @Component({
