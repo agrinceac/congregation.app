@@ -1,7 +1,7 @@
 /**
  * Created by dmitricercel on 15.11.16.
  */
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Congregation} from "./congregation.interface";
 import {Title} from "@angular/platform-browser";
 
@@ -10,10 +10,13 @@ import {Title} from "@angular/platform-browser";
     templateUrl: '/templates/congregation/congregation.component.html',
     providers: [ Title ]
 })
-export class CongregationComponent {
+export class CongregationComponent implements OnInit {
 
     constructor(title: Title) {
         title.setTitle('Congregation App. It helps you to bill info');
     }
 
+    ngOnInit() {
+        initLanding();
+    }
 }
