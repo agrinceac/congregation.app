@@ -17,6 +17,7 @@ var forms_1 = require("@angular/forms");
 var router_1 = require('@angular/router');
 var index_component_1 = require("./index.component");
 var congregation_module_1 = require("./congregation/congregation.module");
+var speakers_module_1 = require("./congregation/modules/speakers/speakers.module");
 var appRoutes = [];
 var IndexModule = (function () {
     function IndexModule() {
@@ -30,7 +31,8 @@ var IndexModule = (function () {
                 http_1.HttpModule,
                 material_1.MaterialModule.forRoot(),
                 router_1.RouterModule.forRoot(appRoutes),
-                congregation_module_1.CongregationModule
+                congregation_module_1.CongregationModule,
+                speakers_module_1.SpeakersModule
             ],
             declarations: [
                 index_component_1.IndexComponent

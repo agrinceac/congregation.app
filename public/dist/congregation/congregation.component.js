@@ -17,6 +17,9 @@ var CongregationComponent = (function () {
     function CongregationComponent(title) {
         title.setTitle('Congregation App. It helps you to bill info');
     }
+    CongregationComponent.prototype.ngOnInit = function () {
+        initLanding();
+    };
     CongregationComponent = __decorate([
         core_1.Component({
             selector: 'congregation-app',

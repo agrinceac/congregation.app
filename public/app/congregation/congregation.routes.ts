@@ -5,9 +5,7 @@ import {EldersComponent} from "./modules/elders/component/elders.component";
 import {ElderComponent} from "./modules/elders/component/elder.component";
 
 const congregationRoutes: Routes = [
-    { path: '',  component: CongregationComponent },
-    { path: 'elders',  component: EldersComponent },
-    { path: 'elders/:id',  component: ElderComponent },
+    { path: '',  component: CongregationComponent }
 ];
 
 @NgModule({

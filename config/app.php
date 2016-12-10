@@ -186,8 +186,7 @@ return [
         \App\City\CityServiceProvider::class,
 
 
-        \App\Profile\ProfileServiceProvider::class,
-        \App\Elder\ElderServiceProvider::class
+        \App\Profile\ProfileServiceProvider::class
 
     ],
 
