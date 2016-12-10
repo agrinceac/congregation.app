@@ -9,9 +9,11 @@ import {IndexComponent} from "./index.component";
 import {CongregationModule} from "./congregation/congregation.module";
 import {SpeakersModule} from "./congregation/modules/speakers/speakers.module";
 import {UnauthorizedComponent} from "./core/authorization/unautorized.component";
+import {DashboardComponent} from "./core/authorization/dashboard.component";
 
 const appRoutes: Routes = [
-    { path: 'unauthorized', component: UnauthorizedComponent }
+    { path: 'unauthorized', component: UnauthorizedComponent },
+    { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     ],
     declarations: [
         IndexComponent,
-        UnauthorizedComponent
+        UnauthorizedComponent,
+        DashboardComponent
     ],
     bootstrap: [
         IndexComponent

@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
     providers: [ Title, SpeakerService ]
 })
 export class SpeakersComponent {
-    speakers: Array;
+    speakers: Array<any>;
 
     constructor(
         private title: Title,

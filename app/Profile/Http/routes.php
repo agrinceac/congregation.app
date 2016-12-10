@@ -6,5 +6,5 @@
  * Time: 21:40
  */
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/api/profile', 'ProfileController@show');
+    Route::get('profile', 'ProfileController@show');
 });
