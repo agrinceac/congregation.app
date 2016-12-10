@@ -16,6 +16,6 @@ export class CongregationComponent implements OnInit {
     }
 
     ngOnInit() {
-        initLanding();
+        window.initLanding();
     }
 }
