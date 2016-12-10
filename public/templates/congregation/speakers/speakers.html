@@ -1,3 +1,13 @@
 <div class="container">
-    <h1>Speakers</h1>
+    <div class="col-md-12">
+        <h1>Speakers</h1>
+        <div *ngFor="let speaker of speakers; let isEven = even" [style.color]="isEven ? 'green' : 'blue' " >
+            <div class="col-md-12">
+                {{speaker.firstname}} {{speaker.lastname}}
+            </div>
+        </div>
+
+    </div>
+
+
 </div>
