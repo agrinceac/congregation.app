@@ -28,3 +28,8 @@
 .sign-in-form .form-group {
     margin-bottom: 0px;
 }
+
+.sign-in-form .alert {
+    padding: 0;
+    margin-top: 5px;
+}

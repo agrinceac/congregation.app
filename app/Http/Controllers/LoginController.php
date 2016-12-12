@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -13,7 +16,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -21,10 +24,15 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function signIn(Request $request)
+    public function signIn(SignInRequest $request)
     {
-        dump($request->input('username'), $request->input('password'));
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-        return response()->json(true);
+        if (Auth::attempt(['email' => $username, 'password' => $password])) {
+            return response()->json(true);
+        }
+
+        return response('Authorization failed', 401);
     }
 }
