@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 
 import {CongregationRoutesModule} from "./congregation.routes";
 import {CongregationComponent} from "./congregation.component";
-import {SignInFormComponent} from "../core/authorization/component/signInForm.component";
+import {SignInComponent} from "../core/authorization/component/signIn.component";
 
 @NgModule({
     imports: [
@@ -15,7 +15,7 @@ import {SignInFormComponent} from "../core/authorization/component/signInForm.co
     ],
     declarations: [
         CongregationComponent,
-        SignInFormComponent
+        SignInComponent
     ]
 })
 export class CongregationModule {}

@@ -9,11 +9,16 @@ import {IndexComponent} from "./index.component";
 import {CongregationModule} from "./congregation/congregation.module";
 import {SpeakersModule} from "./congregation/modules/speakers/speakers.module";
 import {UnauthorizedComponent} from "./core/authorization/unautorized.component";
-import {DashboardComponent} from "./core/authorization/dashboard.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {NotFoundComponent} from "./core/notFound.component";
+import {HeaderComponent} from "./dashboard/header.component";
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: UnauthorizedComponent },
-    { path: 'dashboard', component: DashboardComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    { path: '404', component: NotFoundComponent },
+
+    { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({
@@ -30,7 +35,9 @@ const appRoutes: Routes = [
     declarations: [
         IndexComponent,
         UnauthorizedComponent,
-        DashboardComponent
+        DashboardComponent,
+        NotFoundComponent,
+        HeaderComponent
     ],
     bootstrap: [
         IndexComponent

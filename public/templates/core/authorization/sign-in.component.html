@@ -1,4 +1,5 @@
 <div class="row sign-in-form" *ngIf="!isAuthorized()">
+    <h4 class="name">Sign-in</h4>
     <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
         <form [formGroup]="loginForm" (ngSubmit)="signIn($event)" novalidate>
             <div class="form-group">
@@ -31,11 +32,19 @@
         </form>
     </div>
 </div>
-<div class="row signed-in" *ngIf="isAuthorized()">
-    <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
-        <h5 style="color: #ffffff;">Profile</h5>
-        <div class="name" style="color: #ffffff;">
-            {{user.profile?.name}}
-        </div>
-    </div>
+<div class="signed-in" *ngIf="isAuthorized()">
+    <h4 class="name">
+       {{user.profile?.name}}
+    </h4>
+    <ul class="sidebar-nav">
+        <li>
+            <a routerLink="dashboard">Dashboard</a>
+        </li>
+        <li>
+            <a routerLink="profile">Profile</a>
+        </li>
+        <li class="logout">
+            <a (click)="logout()">Logout</a>
+        </li>
+    </ul>
 </div>
