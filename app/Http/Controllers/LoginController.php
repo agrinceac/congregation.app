@@ -35,4 +35,13 @@ class LoginController extends Controller
 
         return response('Authorization failed', 401);
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return response()->json(true);
+    }
 }

@@ -9,7 +9,7 @@ import {UserService} from "../service/user.service";
     templateUrl: '/templates/core/authorization/sign-in.component.html',
     providers: [UserService]
 })
-export class SignInFormComponent {
+export class SignInComponent {
     public loginForm = this.fb.group({
         email: ["", Validators.required],
         password: ["", Validators.required]
@@ -24,6 +24,7 @@ export class SignInFormComponent {
         private router: Router,
         private user: UserService
     ) {}
+
     signIn(event) {
         if ( this.loginForm.valid ) {
             this.http
@@ -43,5 +44,20 @@ export class SignInFormComponent {
 
     isAuthorized() {
         return this.user.authorized;
+    }
+
+    logout() {
+        this.http
+            .post('/api/auth/logout', this.user)
+            .subscribe(response => {
+                this.router.navigate(['/']);
+                this.user.isAuthorized();
+            }, response => {
+                if ( response.status == 401 ) {
+                    this.error = true;
+                } else {
+                    console.log(response);
+                }
+            })
     }
 }
