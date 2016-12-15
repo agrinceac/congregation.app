@@ -1,13 +1,14 @@
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
 import 'rxjs/add/operator/map';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UserService {
     public profile: any;
     public authorized: Boolean;
 
-    constructor( private http: Http){
+    constructor( private http: Http, private router: Router ){
         this.loadProfile();
         this.isAuthorized();
     }
@@ -44,5 +45,18 @@ export class UserService {
             );
 
         return this.authorized;
+    }
+
+    isAuthorizedForComponent() {
+        this.http
+            .get('/api/profile')
+            .subscribe(
+                response => {
+                    console.log('You are authorized. Congratulation!');
+                },
+                response => {
+                    this.router.navigate(['unauthorized']);
+                },
+            );
     }
 }

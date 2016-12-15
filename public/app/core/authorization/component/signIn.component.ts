@@ -4,6 +4,12 @@ import {Validators, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 
+class User {
+    _token: string;
+    username: string;
+    password: string;
+}
+
 @Component({
     selector: 'cg-sign-in',
     templateUrl: '/templates/core/authorization/sign-in.component.html',
@@ -14,6 +20,7 @@ export class SignInComponent {
         email: ["", Validators.required],
         password: ["", Validators.required]
     });
+    public userData: User = new User;
     public error: Boolean = false;
     public submitted: boolean;
     public profile: any;
@@ -28,8 +35,9 @@ export class SignInComponent {
     signIn(event) {
         if ( this.loginForm.valid ) {
             this.http
-                .post('/api/auth/signIn', this.user)
+                .post('/api/auth/signIn', this.userData)
                 .subscribe(response => {
+                    console.log(this.user);
                     this.router.navigate(['dashboard']);
                 }, response => {
                     if ( response.status == 401 ) {
@@ -48,7 +56,7 @@ export class SignInComponent {
 
     logout() {
         this.http
-            .post('/api/auth/logout', this.user)
+            .post('/api/auth/logout', this.userData)
             .subscribe(response => {
                 this.router.navigate(['/']);
                 this.user.isAuthorized();
