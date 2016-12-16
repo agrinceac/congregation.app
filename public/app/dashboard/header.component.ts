@@ -13,12 +13,10 @@ import {UserService} from "../core/authorization/service/user.service";
 })
 export class HeaderComponent{
     constructor(
-        private title: Title,
         private user: UserService,
         private http: Http,
         private router: Router
     ){
-        this.title.setTitle('Congregation App. Dashboard');
     }
 
     logout() {

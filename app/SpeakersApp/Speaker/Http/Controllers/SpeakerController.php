@@ -30,7 +30,7 @@ class SpeakerController extends Controller
      */
     public function index()
     {
-        $speakers = Speaker::all();
+        $speakers = Speaker::with(['status'])->get();
 
         return response()->json($speakers);
     }
