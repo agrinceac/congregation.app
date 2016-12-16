@@ -19,7 +19,7 @@ export class SpeakersComponent {
         private speakerService: SpeakerService,
         private router: Router
     ) {
-        title.setTitle('Congregation App. Speaker details');
+        title.setTitle('Congregation App. Speakers list');
         this.loadSpeakers();
     }
 

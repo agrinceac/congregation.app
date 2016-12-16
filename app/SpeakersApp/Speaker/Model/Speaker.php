@@ -14,6 +14,11 @@ class Speaker extends Model
         return $this->belongsToMany(Speech::class, 'speakers_speeches', 'speakerId', 'speechId');
     }
 
+    public function status()
+    {
+        return $this->hasOne( Status::class, 'id', 'statusId');
+    }
+
     public function addSpeech($speechId)
     {
         if ( !$this->speeches->contains($speechId) ) {

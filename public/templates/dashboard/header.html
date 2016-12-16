@@ -20,7 +20,21 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                <li routerLinkActive="discourses">
+                    <a routerLink="/discourses">
+                        Discourses
+                    </a>
+                </li>
+                <li routerLinkActive="speakers">
+                    <a routerLink="/speakers">
+                        Speakers
+                    </a>
+                </li>
+                <li routerLinkActive="speeches">
+                    <a routerLink="/speeches">
+                        Speeches
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -33,7 +47,7 @@
 
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a routerLink="profile">Profile</a>
+                            <a routerLink="/profile">Profile</a>
                         </li>
                         <li>
                             <a (click)="logout()">

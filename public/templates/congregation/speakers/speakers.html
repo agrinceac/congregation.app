@@ -1,13 +1,37 @@
-<div class="container">
-    <div class="col-md-12">
-        <h1>Speakers</h1>
-        <div *ngFor="let speaker of speakers; let isEven = even" [style.color]="isEven ? 'green' : 'blue' " >
+<div id="app">
+    <cg-header></cg-header>
+
+    <div class="container">
+        <div class="row">
             <div class="col-md-12">
-                {{speaker.firstname}} {{speaker.lastname}}
+                <h1>Speakers</h1>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Mobile</td>
+                            <td>Status</td>
+                            <td>Nearest discourse</td>
+                        </tr>
+
+                        <tr *ngFor="let speaker of speakers; let isEven = even; let $index = index;">
+                            <td>{{$index+1}}</td>
+                            <td>
+                                {{speaker.firstname}} {{speaker.lastname}}
+                                <div class="additional">
+                                    Created at: {{speaker.created_at}} <br>
+                                    Updated at: {{speaker.updated_at}}
+                                </div>
+                            </td>
+                            <td>{{speaker.phone}}</td>
+                            <td [style.color]="speaker.status.color">{{speaker.status.name}}</td>
+                            <td>{{speaker.nearestDiscourse?'':'Not specified'}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
-
     </div>
-
-
 </div>

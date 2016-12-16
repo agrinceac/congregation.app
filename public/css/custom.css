@@ -58,3 +58,8 @@ a {
     color: #d04c2f;
     cursor: pointer;
 }
+
+.table  .additional {
+    font-size: 11px;
+    color: #5f5f5f;
+}

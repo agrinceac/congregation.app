@@ -7,11 +7,14 @@ import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import {IndexComponent} from "./index.component";
 import {CongregationModule} from "./congregation/congregation.module";
-import {SpeakersModule} from "./congregation/modules/speakers/speakers.module";
 import {UnauthorizedComponent} from "./core/authorization/unautorized.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {NotFoundComponent} from "./core/notFound.component";
 import {HeaderComponent} from "./dashboard/header.component";
+import {SpeakersRoutesModule} from "./congregation/modules/speakers/speakers.routes";
+import {SpeakersComponent} from "./congregation/modules/speakers/speakers.component";
+import {SpeakerComponent} from "./congregation/modules/speakers/speaker.component";
+import {Ng2PaginationModule} from "ng2-pagination";
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: UnauthorizedComponent },
@@ -22,6 +25,16 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+    declarations: [
+        IndexComponent,
+        UnauthorizedComponent,
+        DashboardComponent,
+        NotFoundComponent,
+        HeaderComponent,
+        SpeakersComponent,
+        SpeakerComponent
+
+    ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
@@ -30,14 +43,7 @@ const appRoutes: Routes = [
         MaterialModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         CongregationModule,
-        SpeakersModule
-    ],
-    declarations: [
-        IndexComponent,
-        UnauthorizedComponent,
-        DashboardComponent,
-        NotFoundComponent,
-        HeaderComponent
+        SpeakersRoutesModule
     ],
     bootstrap: [
         IndexComponent
