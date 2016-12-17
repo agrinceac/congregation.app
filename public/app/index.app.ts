@@ -15,6 +15,9 @@ import {SpeakersRoutesModule} from "./congregation/modules/speakers/speakers.rou
 import {SpeakersComponent} from "./congregation/modules/speakers/speakers.component";
 import {SpeakerComponent} from "./congregation/modules/speakers/speaker.component";
 import {Ng2PaginationModule} from "ng2-pagination";
+import {SpeechesRoutesModule} from "./congregation/modules/speeches/speeches.routes";
+import {SpeechesComponent} from "./congregation/modules/speeches/speeches.component";
+import {SpeechComponent} from "./congregation/modules/speeches/speech.component";
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: UnauthorizedComponent },
@@ -32,8 +35,9 @@ const appRoutes: Routes = [
         NotFoundComponent,
         HeaderComponent,
         SpeakersComponent,
-        SpeakerComponent
-
+        SpeakerComponent,
+        SpeechesComponent,
+        SpeechComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +47,8 @@ const appRoutes: Routes = [
         MaterialModule.forRoot(),
         RouterModule.forRoot(appRoutes),
         CongregationModule,
-        SpeakersRoutesModule
+        SpeakersRoutesModule,
+        SpeechesRoutesModule
     ],
     bootstrap: [
         IndexComponent
