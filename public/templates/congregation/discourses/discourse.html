@@ -53,7 +53,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <nav class="navbar navbar-default">
                             <div class="container-fluid">
-                                <p class="navbar-text" [style.color]="discourse?.data.assignment.status.color">{{discourse?.getAssignment().status.name}}</p>
+                                <p class="navbar-text" [style.color]="discourse?.getAssignment().status.color">{{discourse?.getAssignment().status.name}}</p>
                                 <p class="navbar-text"> {{discourse?.getAssignment().updated_at| smartdate}} </p>
 
                                 <div class="animated pull-right fadeIn animation-delay-10 control-buttons">
@@ -73,7 +73,7 @@
             <div class="col-md-7" *ngIf="!discourse?.isAssigned()">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Not assigned</h2>
+                        <h2 class="text-center">Not assigned</h2>
                     </div>
                 </div>
             </div>

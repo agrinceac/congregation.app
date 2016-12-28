@@ -4,6 +4,7 @@ namespace App\SpeakersApp\Discourse\Http\Controllers;
 
 use App\SpeakersApp\Discourse\Model\Discourse;
 use App\SpeakersApp\Discourse\View\DiscourseCalendar;
+use App\SpeakersApp\Discourse\View\DiscourseDetails;
 use Carbon\Carbon;
 use Composer\Command\DumpAutoloadCommand;
 use Illuminate\Http\Request;
@@ -106,7 +107,7 @@ class DiscourseController extends Controller
     {
         $discourse = Discourse::with(['congregation', 'assignments', 'commentaries'])->findOrFail($id);
 
-        return response()->json($discourse);
+        return response()->json(new DiscourseDetails($discourse));
     }
 
     /**

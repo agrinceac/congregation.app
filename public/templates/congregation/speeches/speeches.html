@@ -2,17 +2,21 @@
     <cg-header></cg-header>
 
     <div class="container animated fadeIn">
+        <div class="page-header animated fadeIn animation-delay-3">
+            <h1>Speeches</h1>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
-                <h1>Speeches</h1>
-
                 <div class="table-responsive">
                     <table class="table">
-                        <tr>
-                            <td>#</td>
-                            <td>Name</td>
-                            <td>Nearest discourse</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Nearest discourse</th>
+                            </tr>
+                        </thead>
 
                         <tr *ngFor="let speech of speeches; let isEven = even; let $index = index;">
                             <td>{{$index+1}}</td>

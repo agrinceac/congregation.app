@@ -74,6 +74,9 @@ class Discourse extends Model
         return $this->hasOne(Congregation::class, 'id', 'congregationId');
     }
 
+    /**
+     * @return Discourse
+     */
     public function nextDate()
     {
         $discourses = new Discourse();
@@ -84,6 +87,9 @@ class Discourse extends Model
                           ->first();
     }
 
+    /**
+     * @return Discourse
+     */
     public function prevDate()
     {
         $discourses = new Discourse();

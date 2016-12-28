@@ -2,6 +2,17 @@ a {
     cursor: pointer;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
+}
+
+body {
+    font-weight: 300 !important;
+}
+table td {
+    font-weight: 300 !important;
+}
+
 .full-page-text {
     position: absolute;
     top: 45%;
@@ -231,8 +242,8 @@ a {
 }
 
 .navbar-default {
-    background-color: #fdfdfd;
-    border-color: #f5f5f5;
+    background-color: #fbfbfb;
+    border-color: #fbfbfb;
 }
 
 .controls {
@@ -243,4 +254,5 @@ a {
 .controls .navbar-text {
     padding-left: 0;
     margin-left: 0;
+    font-weight: 100;
 }

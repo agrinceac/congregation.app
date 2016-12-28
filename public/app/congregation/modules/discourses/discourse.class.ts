@@ -5,52 +5,52 @@ export class Discourse {
     constructor( public data: any ) {}
 
     getTime() {
-        return this.data.time;
+        return this.data.discourse.time;
     }
 
     getMoment() {
-        return moment(this.data.time);
+        return moment(this.data.discourse.time);
     }
 
     getYear() {
         let year: Number;
-        year = parseInt(moment(this.data.time).format('Y'));
+        year = parseInt(moment(this.data.discourse.time).format('Y'));
 
         return year;
     }
 
     getMonth() {
         let month: String;
-        month = moment(this.data.time).format('MMMM');
+        month = moment(this.data.discourse.time).format('MMMM');
 
         return month;
     }
 
     getMonthNumber() {
         let month: Number;
-        month = parseInt(moment(this.data.time).format('M'));
+        month = parseInt(moment(this.data.discourse.time).format('M'));
 
         return month;
     }
 
     getId() {
-        return this.data.id;
+        return this.data.discourse.id;
     }
 
     getSpeaker() {
-        return this.data.assignment.speaker;
+        return this.data.discourse.assignment.speaker;
     }
 
     getSpeech() {
-        return this.data.assignment.speech;
+        return this.data.discourse.assignment.speech;
     }
 
     isAssigned() {
-        return this.data.assignment;
+        return this.data.discourse.assignment;
     }
 
     getAssignment() {
-        return this.data.assignment;
+        return this.data.discourse.assignment;
     }
 
     isConfirmed() {
