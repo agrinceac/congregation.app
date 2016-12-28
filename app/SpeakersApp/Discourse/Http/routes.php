@@ -7,6 +7,7 @@
  */
 
 Route::group(['middleware' => 'web'], function () {
-    Route::resource('/api/discourses', 'DiscourseController');
-
+    Route::get('discourses/calendar', 'DiscourseController@calendar');
+    Route::resource('discourses/{id}/log', 'DiscourseHistoryController');
+    Route::resource('discourses', 'DiscourseController');
 });

@@ -1,0 +1,89 @@
+<div id="app">
+    <cg-header></cg-header>
+
+    <div class="container discourse animated fadeIn">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-7 col-sm-9 col-xs-12 text-left">
+                    <h1 class="pageHeading">
+                        {{discourse?.getTime() | date:'MMMM'}} <strong>{{discourse?.getTime() | date:'Do'}}</strong> {{discourse?.getTime() | date:'YYYY'}} at {{discourse?.getTime() | date:'HH:mm'}}
+                        <div class="visible-xs-inline-block mobile-buttons animated fadeInDown animation-delay-10">
+                            <a (click)="back()" class="btn btn-default text-left">
+                                <i class="glyphicon glyphicon-menu-left"></i> Back
+                            </a>
+                            <a class="btn btn-primary">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a class="btn btn-danger">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+                        </div>
+                    </h1>
+                </div>
+                <div class="col-md-5 col-sm-3 hidden-xs text-right">
+                    <div class="animated fadeInDown animation-delay-10">
+                        <a (click)="back()" class="btn btn-default text-left">
+                            <i class="glyphicon glyphicon-menu-left"></i> <span class="hidden-xs hidden-sm">Back</span>
+                        </a>
+                        <a class="btn btn-primary">
+                            <i class="glyphicon glyphicon-pencil"></i> <span class="hidden-xs hidden-sm">Edit</span>
+                        </a>
+                        <a class="btn btn-danger">
+                            <i class="glyphicon glyphicon-remove"></i> <span class="hidden-xs hidden-sm">Cancel</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-7" *ngIf="discourse?.isAssigned()">
+                <div class="row speaker">
+                    <div class="col-md-12">
+                        <h2>{{discourse?.getSpeech().name}}</h2>
+                    </div>
+                </div>
+                <div class="row speech">
+                    <div class="col-md-12">
+                        <h2>{{discourse?.getSpeaker().firstname}} {{discourse?.getSpeaker().lastname}}</h2>
+                    </div>
+                </div>
+                <div class="row controls">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <p class="navbar-text" [style.color]="discourse?.data.assignment.status.color">{{discourse?.getAssignment().status.name}}</p>
+                                <p class="navbar-text"> {{discourse?.getAssignment().updated_at| smartdate}} </p>
+
+                                <div class="animated pull-right fadeIn animation-delay-10 control-buttons">
+                                    <a class="btn btn-primary" *ngIf="!discourse?.isConfirmed()">
+                                        <i class="glyphicon glyphicon-ok-circle"></i> <span>Confirm</span>
+                                    </a>
+                                    <a class="btn btn-success" *ngIf="!discourse?.isCompleted()">
+                                        <i class="glyphicon glyphicon-thumbs-up"></i> <span>Complete</span>
+                                    </a>
+                                </div>
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7" *ngIf="!discourse?.isAssigned()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Not assigned</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <cg-discourse-history [discourseId]="id"></cg-discourse-history>
+            </div>
+        </div>
+
+    </div>
+
+    <cg-footer></cg-footer>
+</div>
