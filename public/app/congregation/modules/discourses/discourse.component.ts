@@ -16,6 +16,8 @@ import {Location} from '@angular/common';
 export class DiscourseComponent {
     public id: number;
     public discourse: Discourse;
+    public nextDisc: Discourse;
+    public prevDisc: Discourse;
 
     constructor(
         private title: Title,
@@ -35,8 +37,17 @@ export class DiscourseComponent {
         this.discoursesService
             .details(id)
             .subscribe(response => {
-                this.discourse = new Discourse(response.json());
-                console.log(this);
+                let result = response.json();
+                if ( result.discourse ) {
+                    this.discourse = new Discourse(result.discourse);
+                }
+                if ( result.prev ) {
+                    this.prevDisc  = new Discourse(result.prev);
+                }
+                if ( result.next ) {
+                    this.nextDisc  = new Discourse(result.next);
+                }
+
             }, response => {
                 if ( response.status == 401 ) {
                     this.router.navigate(['unauthorized']);
@@ -45,7 +56,7 @@ export class DiscourseComponent {
     }
 
     back() {
-        this.location.back();
+        this.router.navigate(['discourses/calendar']);
     }
 
     prev() {

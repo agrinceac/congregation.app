@@ -24,7 +24,7 @@ class DiscourseAssignment extends Model
 
     public function speaker()
     {
-        return $this->belongsTo(Speaker::class, 'speakerId');
+        return $this->belongsTo(Speaker::class, 'speakerId')->with(['congregation']);
     }
 
     public function speech()

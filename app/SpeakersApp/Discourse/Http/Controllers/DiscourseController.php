@@ -6,10 +6,8 @@ use App\SpeakersApp\Discourse\Model\Discourse;
 use App\SpeakersApp\Discourse\View\DiscourseCalendar;
 use App\SpeakersApp\Discourse\View\DiscourseDetails;
 use Carbon\Carbon;
-use Composer\Command\DumpAutoloadCommand;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -17,9 +15,7 @@ use Illuminate\Support\Facades\Input;
 class DiscourseController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * DiscourseController constructor.
      */
     public function __construct()
     {
@@ -43,9 +39,7 @@ class DiscourseController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function calendar()
     {

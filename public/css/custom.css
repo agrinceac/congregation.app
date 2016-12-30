@@ -6,11 +6,28 @@ a {
     font-weight: 200;
 }
 
+.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small {
+    font-size: 55%;
+}
+
+.h1 .small, .h1 small, .h2 .small, .h2 small, .h3 .small, .h3 small, .h4 .small, .h4 small, .h5 .small, .h5 small, .h6 .small, .h6 small, h1 .small, h1 small, h2 .small, h2 small, h3 .small, h3 small, h4 .small, h4 small, h5 .small, h5 small, h6 .small, h6 small {
+    font-weight: 200;
+    line-height: 1;
+    color: #434343;
+}
+
 body {
     font-weight: 300 !important;
 }
 table td {
     font-weight: 300 !important;
+}
+
+.text-vertical-center h1 {
+    font-weight: 300;
+}
+.text-vertical-center .btn-dark {
+    font-weight: 200;
 }
 
 .full-page-text {
@@ -119,11 +136,11 @@ table td {
     font-weight: 300;
 }
 
-.discourse .speaker h2 {
+.discourse .speech h2 {
     font-weight: 200;
 }
 
-.discourse .speech h2 {
+.discourse .speaker h2 {
     font-weight: 300;
 }
 
@@ -255,4 +272,56 @@ table td {
     padding-left: 0;
     margin-left: 0;
     font-weight: 100;
+}
+
+.discourseContainer {
+    height: 260px;
+}
+
+.discourseContainer .speech {
+    height: 96px;
+}
+
+.discourseNavigatorButton {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.discourseNavigatorButton .glyphicon.glyphicon-menu-left {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -3px;
+    opacity: .3;
+    font-size: 20px;
+}
+.discourseNavigatorButton .glyphicon.glyphicon-menu-right {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -3px;
+    opacity: .3;
+    font-size: 20px;
+}
+
+.discourseNavigatorButton .date {
+    font-weight: 200;
+    display: block;
+}
+.discourseNavigatorButton .date strong {
+    font-weight: 300;
+}
+
+.discourseNavigatorButton .speech {
+    white-space: initial;
+    height: 57px;
+}
+
+.discourseNavigatorButton .notAssigned .speech,
+.discourseNavigatorButton .notAssigned .speaker
+{
+    font-style: italic;
 }
