@@ -30,6 +30,8 @@ import {FromNowPipe} from "./core/pipes/fromNow.pipe";
 import {CalendarPipe} from "./core/pipes/calendar.pipe";
 import {DatePipe} from "./core/pipes/date.pipe";
 import {SmartDatePipe} from "./core/pipes/smartDate.pipe";
+import {DiscourseCommentary} from "./congregation/modules/discourses/history/commentary.component";
+import {AssignComponent} from "./congregation/modules/discourses/assign.component";
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: UnauthorizedComponent },
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
         SpeakerComponent,
         SpeechesComponent,
         SpeechComponent,
+        AssignComponent,
         DiscourseComponent,
         DiscoursesComponent,
         DiscoursesCalendarComponent,
@@ -60,7 +63,8 @@ const appRoutes: Routes = [
         DatePipe,
         SmartDatePipe,
         CalendarPipe,
-        FromNowPipe
+        FromNowPipe,
+        DiscourseCommentary
     ],
     imports: [
         CommonModule,

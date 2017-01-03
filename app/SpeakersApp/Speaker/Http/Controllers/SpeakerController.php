@@ -30,9 +30,16 @@ class SpeakerController extends Controller
      */
     public function index()
     {
-        $speakers = Speaker::with(['status'])->get();
+        $speakers = Speaker::with(['status']);
+        $value    = Input::get('search');
+        if ($value) {
+            $speakers->where('firstname', 'LIKE', '%'.$value.'%')
+                ->orWhere('lastname', 'LIKE', '%'.$value.'%')
+                ->orWhere('patronymic', 'LIKE', '%'.$value.'%')
+                ->orWhere('code', 'LIKE', '%'.$value.'%');
+        }
 
-        return response()->json($speakers);
+        return response()->json($speakers->get());
     }
 
     /**

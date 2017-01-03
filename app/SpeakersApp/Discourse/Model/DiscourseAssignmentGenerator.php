@@ -1,6 +1,8 @@
 <?php
 namespace App\SpeakersApp\Discourse\Model;
 
+use App\SpeakersApp\Speaker\Model\Speaker;
+use App\SpeakersApp\Speech\Model\Speech;
 use Illuminate\Support\Facades\Auth;
 
 class DiscourseAssignmentGenerator
@@ -26,9 +28,9 @@ class DiscourseAssignmentGenerator
         return $this->_commentaryGenerator;
     }
 
-    public function create( $speakerId, $speechId, $comment='' )
+    public function create( Speaker $speaker, Speech $speech, string $comment='' )
     {
-        $id = $this->_create($speakerId, $speechId);
+        $id = $this->_create($speaker, $speech);
         if ( $id && $comment ) {
             $this->_createComment($comment);
         }
@@ -44,7 +46,7 @@ class DiscourseAssignmentGenerator
         return true;
     }
 
-    private function _create( $speakerId, $speechId )
+    private function _create( Speaker $speaker, Speech $speech )
     {
         $this->_cancelOldAssignment();
 
@@ -54,24 +56,22 @@ class DiscourseAssignmentGenerator
         $assignment->statusId    = DiscourseAssignment::STATUS_PRESET;
 
         $assignment->discourseId = $this->getDiscourse()->id;
-        $assignment->speakerId   = $speakerId;
-        $assignment->speechId    = $speechId;
+        $assignment->speakerId   = $speaker->id;
+        $assignment->speechId    = $speech->id;
 
         $assignment->save();
         $this->getCommentaryGenerator()->newAssignment($assignment);
 
-        $this->_attachSpeech($speakerId, $speechId, $assignment);
+        $this->_attachSpeech($speaker, $speech, $assignment);
         return $assignment->id;
     }
 
-    private function _attachSpeech($speakerId, $speechId, $assignment)
+    private function _attachSpeech(Speaker $speaker, Speech $speech, $assignment)
     {
-        $speakers = new Speaker();
-        $speaker = $speakers->find($speakerId);
-        if ( !$speaker->speeches->contains($speechId) ) {
+        if ( !$speaker->speeches->contains($speech->id) ) {
             $this->getCommentaryGenerator()->attachSpeech($assignment);
         }
-        return $speaker->addSpeech($speechId);
+        return $speaker->addSpeech($speech->id);
     }
 
     private function _createComment($text)

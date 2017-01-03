@@ -70,7 +70,7 @@ class Speaker extends Model
      */
     public function getName()
     {
-        return $this->getLastname().' '.$this->getFirstname().' '.$this->getPatronymic();
+        return $this->getLastname().' '.$this->getFirstname();
     }
 
     /**

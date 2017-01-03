@@ -24,6 +24,11 @@
     position: relative;
 }
 
+.btn-danger {
+    font-size: 9px;
+    padding: 2px 4px;
+    line-height: 8px;
+}
 
 .timeline .timeline-heading {
     margin-bottom: 3px;

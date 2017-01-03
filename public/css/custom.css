@@ -42,7 +42,7 @@ table td {
 .sign-in-form label{
     color: #ffffff;
     margin-bottom: 0px;
-    font-weight: normal;
+    font-weight: 300;
 }
 
 .sign-in-form .checkbox {
@@ -153,15 +153,15 @@ table td {
 }
 
 .page-header .mobile-buttons .btn {
-    line-height: 30px;
-    margin-top: 0px;
-    height: 35px;
+    line-height: 41px;
+    margin-top: -6px;
+    height: 42px;
     width: auto;
     padding: 0 15px;
 }
 
 .page-header .mobile-buttons .btn .glyphicon {
-    line-height: 30px;
+    line-height: 37px;
 }
 
 .page-header .btn .glyphicon {
@@ -248,9 +248,12 @@ table td {
     font-weight: 100;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 600px) {
     .page-header {
         margin: 0;
+    }
+    .navbar-header {
+        padding-left: 5px;
     }
 }
 
@@ -324,4 +327,24 @@ table td {
 .discourseNavigatorButton .notAssigned .speaker
 {
     font-style: italic;
+}
+
+.label {
+    font-weight: 300;
+}
+
+.status-primary {
+    color: #055584 !important;
+}
+.status-info {
+    color: #0088ac !important;
+}
+.status-success {
+    color: #24813f !important;
+}
+.status-warning {
+    color: #c09358 !important;
+}
+.status-danger {
+    color: #c0684f !important;
 }

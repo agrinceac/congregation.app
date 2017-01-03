@@ -13,11 +13,11 @@ import {DiscourseHistoryService} from "./history/discourseHistory.service";
 import {Subscription} from "rxjs";
 
 @Component({
-    selector: 'cg-discourse',
-    templateUrl: '/templates/congregation/discourses/discourse.html',
+    selector: 'cg-assign',
+    templateUrl: '/templates/congregation/discourses/assign.html',
     providers: [ Title, DiscourseService ]
 })
-export class DiscourseComponent implements OnDestroy {
+export class AssignComponent implements OnDestroy {
     public id: number;
     public discourse: Discourse;
     public nextDisc: Discourse;
@@ -30,7 +30,7 @@ export class DiscourseComponent implements OnDestroy {
         private router: Router,
         private discourseService: DiscourseService
     ) {
-        this.title.setTitle('Congregation App. Discourse details');
+        this.title.setTitle('Congregation App. Create assignment');
         this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.loadDiscourse(this.id);
@@ -65,11 +65,7 @@ export class DiscourseComponent implements OnDestroy {
     }
 
     back() {
-        this.router.navigate(['discourses/calendar']);
-    }
-
-    assign() {
-        this.router.navigate([`discourses/${this.id}/assign`]);
+        this.router.navigate([`discourses/${this.id}`]);
     }
 
     prev() {

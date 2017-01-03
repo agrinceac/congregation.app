@@ -32,7 +32,7 @@ class DiscourseController extends Controller
         $user = Auth::user();
         $discourses = Discourse::where('congregationId', $user->congregation_id)
                                 ->with(['congregation', 'assignments', 'commentaries'])
-                                ->whereDate( 'time', '>', Carbon::today()->toDateTimeString() )
+                                ->whereDate( 'time', '>', Carbon::today()->addDay(-1)->toDateTimeString() )
                                 ->orderBy('time', 'asc')->get();
 
         return response()->json($discourses);
@@ -46,7 +46,7 @@ class DiscourseController extends Controller
         $user = Auth::user();
         $discourses = Discourse::where('congregationId', $user->congregation_id)
             ->with(['congregation', 'assignments', 'commentaries'])
-            ->whereDate( 'time', '>', Carbon::today()->toDateTimeString() )
+            ->whereDate( 'time', '>', Carbon::today()->addDay(-1)->toDateTimeString() )
             ->orderBy('time', 'asc')->get();
 
         $view = new DiscourseCalendar($discourses);

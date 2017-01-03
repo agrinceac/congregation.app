@@ -44,12 +44,12 @@ class DiscourseHistoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(int $id, Request $request)
+    public function store(int $discourseId, Request $request)
     {
         $commentary = new DiscourseCommentary();
 
-        $commentary->text        = $request;
-        $commentary->discourseId = $id;
+        $commentary->text        = $request->text;
+        $commentary->discourseId = $discourseId;
         $commentary->statusId    = DiscourseCommentary::STATUS_ACTIVE;
         $commentary->authorId    = Auth::id();
 
@@ -82,16 +82,9 @@ class DiscourseHistoryController extends Controller
     {
         $commentary  = DiscourseCommentary::findOrFail($id);
 
-        $commentary->authorId       = Auth::id();
-        $commentary->statusId       = Input::get('statusId');
-        $commentary->congregationId = Input::get('congregationId');
-        $commentary->speakerCode    = Input::get('speakerId');
-        $commentary->speechCode     = Input::get('speechId');
-        $commentary->time           = Input::get('time');
-
-        $commentary->text        = $request->input('text');
-        $commentary->discourseId = $request->input('discourseId');
-        $commentary->statusId    = $request->input('statusId');
+        $commentary->text        = $request->text;
+        $commentary->discourseId = $id;
+        $commentary->statusId    = DiscourseCommentary::STATUS_ACTIVE;
         $commentary->authorId    = Auth::id();
 
         $commentary->save();
@@ -102,20 +95,15 @@ class DiscourseHistoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param int $id
+     * @param int $discourseId
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id, int $discourseId)
     {
-        $discourses = new Discourse();
-        $discourse  = $discourses->findOrFail($id);
-
-        if ( ! $discourse->delete())
-        {
-            return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Discourse with ID {$id}"]);
-        }
+        $commentary  = DiscourseCommentary::findOrFail($discourseId);
+        $commentary->delete();
 
         return response()->json(true);
     }

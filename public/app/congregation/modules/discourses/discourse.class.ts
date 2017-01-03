@@ -1,8 +1,10 @@
 import * as moment from 'moment/moment';
+import {DiscourseService} from "./discourse.service";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class Discourse {
-
-    constructor( public data: any ) {}
+    constructor( public data: any, private service: DiscourseService ) {}
 
     getTime() {
         return this.data.time;
@@ -77,11 +79,27 @@ export class Discourse {
         return this.getAssignment().conditions.isCanceled;
     }
 
-    fromNow( date ) {
-        return moment(date).fromNow();
+    complete() {
+        this.service.complete(this.getAssignment().id).subscribe(response => {
+            this.service.reloadDiscourse('complete');
+        });
     }
 
-    calendar( date ) {
-        return moment(date).calendar();
+    confirm() {
+        this.service.confirm(this.getAssignment().id).subscribe(response => {
+            this.service.reloadDiscourse('confirm');
+        });
+    }
+
+    cancel() {
+        this.service.cancel(this.getAssignment().id).subscribe(response => {
+            this.service.reloadDiscourse('cancel');
+        });
+    }
+
+    deleteComment(commentId) {
+        this.service.deleteComment(this.getId(), commentId).subscribe(response => {
+            this.service.reloadDiscourse('deleteCommentcd');
+        });
     }
 }

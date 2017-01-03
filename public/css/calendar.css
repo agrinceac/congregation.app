@@ -7,6 +7,7 @@
     font-size: 40px;
     color: #6f6f6f;
     font-weight: 200;
+    margin: 0 5px;
 }
 
 .months h3.monthName span {
@@ -29,6 +30,15 @@
     margin-left: -1px;
     margin-top: -1px;
     padding-top: 50px;
+    cursor: pointer;
+    transition:  800ms;
+}
+
+.days:hover {
+    background: #fafafa;
+}
+.days:active {
+    background: #1dc5ff;
 }
 
 .days .dayNumber {
@@ -59,4 +69,11 @@
     position: absolute;
     left: 10px;
     top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .months .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 }

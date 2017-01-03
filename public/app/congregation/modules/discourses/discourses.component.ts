@@ -36,7 +36,7 @@ export class DiscoursesComponent {
 
                 this.discourses.filter(function (discourse, index, array) {
                     that.discourses[index] = Object.assign(discourse, {
-                        'object' : new Discourse(discourse)
+                        'object' : new Discourse(discourse, this.discourseService)
                     });
                 });
                 console.log(that.discourses);
