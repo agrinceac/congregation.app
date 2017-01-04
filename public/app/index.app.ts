@@ -19,7 +19,7 @@ import {SpeakerComponent} from "./congregation/modules/speakers/speaker.componen
 import {SpeechesRoutesModule} from "./congregation/modules/speeches/speeches.routes";
 import {SpeechesComponent} from "./congregation/modules/speeches/speeches.component";
 
-// import {Ng2PaginationModule} from "ng2-pagination";
+import {Ng2PaginationModule} from "ng2-pagination";
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: UnauthorizedComponent },
@@ -52,7 +52,9 @@ const appRoutes: Routes = [
 
         SpeakersRoutesModule,
 
-        SpeechesRoutesModule
+        SpeechesRoutesModule,
+
+        Ng2PaginationModule
     ],
     bootstrap: [
         IndexComponent

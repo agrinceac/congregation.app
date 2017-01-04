@@ -16,7 +16,11 @@
                         </tr>
                         </thead>
 
-                        <tr *ngFor="let speech of speeches; let isEven = even; let $index = index;">
+                        <tr
+                                *ngFor="let speech of speeches| paginate: { itemsPerPage: 10, currentPage: p };
+                                 let isEven = even;
+                                 let $index = index;"
+                        >
                             <td>{{$index+1}}</td>
                             <td>{{speech.code}}</td>
                             <td>
@@ -29,6 +33,9 @@
                         </tr>
                     </table>
                 </div>
+
+                <pagination-controls (pageChange)="p = $event" class="adminPagination"></pagination-controls>
+
             </div>
         </div>
     </div>
