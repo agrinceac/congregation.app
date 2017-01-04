@@ -1,0 +1,35 @@
+<div id="app">
+    <cg-header></cg-header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Speeches</h1>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+
+                        <tr *ngFor="let speech of speeches; let isEven = even; let $index = index;">
+                            <td>{{$index+1}}</td>
+                            <td>{{speech.code}}</td>
+                            <td>
+                                {{speech.name}}
+                                <div class="additional">
+                                    Created at: {{speech.created_at}} <br>
+                                    Updated at: {{speech.updated_at}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

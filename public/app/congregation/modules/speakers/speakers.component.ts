@@ -7,7 +7,9 @@ import {SpeakerService} from "./speaker.service";
 import {Router} from "@angular/router";
 
 @Component({
-    selector: 'cg-speakers',
+
+    // selector: 'cg-speakers',
+
     templateUrl: '/templates/congregation/speakers/speakers.html',
     providers: [ Title, SpeakerService ]
 })
