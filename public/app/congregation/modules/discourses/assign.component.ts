@@ -11,24 +11,33 @@ import {DiscourseHistoryComponent} from "./history/discourseHistory.component";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {DiscourseHistoryService} from "./history/discourseHistory.service";
 import {Subscription} from "rxjs";
+import {Http} from "@angular/http";
+import {SpeakerService} from "../speakers/speaker.service";
 
 @Component({
     selector: 'cg-assign',
     templateUrl: '/templates/congregation/discourses/assign.html',
-    providers: [ Title, DiscourseService ]
+    providers: [ Title, DiscourseService, SpeakerService ],
+    styleUrls: ['css/assign.css'],
 })
-export class AssignComponent implements OnDestroy {
+export class AssignComponent implements OnDestroy, OnInit {
     public id: number;
     public discourse: Discourse;
     public nextDisc: Discourse;
     public prevDisc: Discourse;
-    subscription: Subscription;
+    public subscription: Subscription;
+    public speakerName: string;
+    public speakers: Array<any>;
+    public debtors: Array<any>;
+    public favorites: Array<any>;
+
 
     constructor(
         private title: Title,
         private route: ActivatedRoute,
         private router: Router,
-        private discourseService: DiscourseService
+        private discourseService: DiscourseService,
+        private speakerService: SpeakerService
     ) {
         this.title.setTitle('Congregation App. Create assignment');
         this.route.params.subscribe(params => {
@@ -40,6 +49,11 @@ export class AssignComponent implements OnDestroy {
                 console.log(`${discourse} should be reloaded`);
                 this.loadDiscourse(this.id);
             });
+    }
+
+    ngOnInit() {
+        this.loadFavorites();
+        this.loadDebtors();
     }
 
     loadDiscourse( id ) {
@@ -78,5 +92,38 @@ export class AssignComponent implements OnDestroy {
 
     ngOnDestroy(){
         this.subscription.unsubscribe();
+    }
+
+    reloadSpeakers() {
+        if ( this.speakerName.length > 2 ) {
+            this.speakerService.search(this.speakerName).subscribe(response => {
+                this.speakers = response.json();
+                console.log(this.speakers);
+            }, response => {
+                if ( response.status == 401 ) {
+                    this.router.navigate(['unauthorized']);
+                }
+            });
+        }
+    }
+
+    loadDebtors() {
+        this.speakerService.debtors().subscribe(response => {
+            this.debtors = response.json();
+        }, response => {
+            if ( response.status == 401 ) {
+                this.router.navigate(['unauthorized']);
+            }
+        });
+    }
+
+    loadFavorites() {
+        this.speakerService.favorites().subscribe(response => {
+            this.favorites = response.json();
+        }, response => {
+            if ( response.status == 401 ) {
+                this.router.navigate(['unauthorized']);
+            }
+        });
     }
 }

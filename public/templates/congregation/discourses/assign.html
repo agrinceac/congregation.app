@@ -27,7 +27,26 @@
 
         <div class="row">
             <div class="col-md-7">
-
+                <div class="searchSpeaker">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <input type="text" class="form-control" [(ngModel)]="speakerName" placeholder="Please enter the speaker's name" (ngModelChange)="reloadSpeakers()">
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            or <a href="/" class="btn btn-link">Favorites</a>  <a href="/" class="btn btn-link">Debtors</a>
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let speaker of speakers">
+                        <div class="col-md-12 speaker">
+                            {{speaker.firstname}} {{speaker.lastname}}
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let speaker of favorites">
+                        <div class="col-md-12 speaker">
+                            {{speaker.firstname}} {{speaker.lastname}}
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

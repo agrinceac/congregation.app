@@ -3,6 +3,7 @@
 namespace App\SpeakersApp\Speaker\Http\Controllers;
 
 use App\SpeakersApp\Speaker\Model\Speaker;
+use App\SpeakersApp\Speaker\Repository\SpeakerRepo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -40,6 +41,21 @@ class SpeakerController extends Controller
         }
 
         return response()->json($speakers->get());
+    }
+
+    public function favorites()
+    {
+        $repo = new SpeakerRepo();
+        $speakers = $repo->filterByFavorite()->get();
+        return response()->json($speakers);
+    }
+
+    public function debtors()
+    {
+        $repo = new SpeakerRepo();
+        $speakers = $repo->filterByDebt()->get();
+
+        return response()->json($speakers);
     }
 
     /**

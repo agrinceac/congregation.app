@@ -3,6 +3,7 @@
 namespace App\SpeakersApp\Speaker\Model;
 
 use App\SpeakersApp\Congregation\Model\Congregation;
+use App\SpeakersApp\Discourse\Model\Discourse;
 use App\SpeakersApp\Speech\Model\Speech;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,14 @@ class Speaker extends Model
     public function speeches()
     {
         return $this->belongsToMany(Speech::class, 'speakers_speeches', 'speakerId', 'speechId');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function discourses()
+    {
+        return $this->belongsToMany(Discourse::class, 'discourses_assignments', 'speakerId', 'discourseId');
     }
 
     /**
